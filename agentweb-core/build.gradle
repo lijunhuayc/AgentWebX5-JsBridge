@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compileOnly fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    compileOnly 'com.google.android.material:material:1.0.0'
+    api 'com.download.library:Downloader:4.1.2'
+    api 'com.tencent.tbs.tbssdk:sdk:43697'
+}

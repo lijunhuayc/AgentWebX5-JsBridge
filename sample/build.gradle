@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion BUILD_TOOL_VERSION
+    defaultConfig {
+        applicationId "com.just.agentweb.sample2"
+        minSdkVersion 21
+        targetSdkVersion TARGET_SDK_VERSION.toInteger()
+        versionCode 4
+        versionName "4.1.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    signingConfigs {
+        release {
+            storeFile file("./keystore/keystore.jks")
+            storePassword "admin123"
+            keyAlias "agentweb"
+            keyPassword "admin123"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                abiFilters "armeabi"
+            }
+        }
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                abiFilters "armeabi"
+            }
+        }
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+    lintOptions {
+        abortOnError false
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.2'//只能使用1.0.2版本,否则Android L WebView会报Resources$NotFoundException异常
+    implementation 'com.google.android.material:material:1.0.0'
+
+    implementation project(':jsbridge_x5')
+
+
+    debugImplementation('com.squareup.leakcanary:leakcanary-android:1.6.3')
+    releaseImplementation('com.squareup.leakcanary:leakcanary-android-no-op:1.6.3')
+    testImplementation('com.squareup.leakcanary:leakcanary-android-no-op:1.6.3')
+    implementation('us.feras.mdv:markdownview:1.1.0')
+    implementation('com.lcodecorex:tkrefreshlayout:1.0.7')
+    implementation('com.google.code.gson:gson:2.8.6')
+    implementation('com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14')
+    implementation('com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14')
+    implementation('com.tencent.sonic:sdk:2.0.0')
+    implementation('com.coolindicator.sdk:coolindicator:1.0.0-beta')
+    implementation('com.squareup.picasso:picasso:2.71828')
+    implementation "androidx.multidex:multidex:2.0.1"
+}
