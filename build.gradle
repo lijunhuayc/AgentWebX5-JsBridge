@@ -2,21 +2,11 @@
 
 buildscript {
     repositories {
-        google()
-        jcenter() { url 'http://jcenter.bintray.com' }
-        maven {
-            url "http://mvn.mob.com/android"
-        }
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/groups/public'
-        }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-        maven { url "https://jitpack.io" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
-//        maven { url "http://10.0.0.16:9188/repository/nexus-android/" }
+        maven { url 'https://jitpack.io' }
+        jcenter() { url 'http://jcenter.bintray.com' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
@@ -27,22 +17,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter() { url 'http://jcenter.bintray.com' }
-        maven {
-            url "http://mvn.mob.com/android"
-        }
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/groups/public'
-        }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-        maven { url "https://jitpack.io" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
-//        maven { url "http://10.0.0.16:9188/repository/nexus-android/" }
-
+        maven { url 'https://jitpack.io' }
+        jcenter() { url 'http://jcenter.bintray.com' }
         flatDir {
             dirs 'libs'
         }
